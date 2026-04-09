@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import Formulario from '../components/Formulario.vue'
 import Dashboard from '../components/Dashboard.vue'
 import Dicas from '../components/Dicas.vue'
@@ -8,12 +8,23 @@ const dados = ref(null)
 
 function receber(d) {
     dados.value = d
+
+    // salva corretamente
+    localStorage.setItem('dados', JSON.stringify(d))
 }
 
-localStorage.setItem('dados', JSON.stringify(dados))
-
+// carrega ao iniciar
 const salvo = localStorage.getItem('dados')
-if (salvo) dados.value = JSON.parse(salvo)
+if (salvo) {
+    dados.value = JSON.parse(salvo)
+}
+
+onMounted(() => {
+    const salvo = localStorage.getItem('dados')
+    if (salvo) {
+        dados.value = JSON.parse(salvo)
+    }
+})
 
 </script>
 
