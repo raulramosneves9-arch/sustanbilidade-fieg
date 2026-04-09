@@ -10,7 +10,6 @@ function receber(d) {
     dados.value = d
 }
 
-
 localStorage.setItem('dados', JSON.stringify(dados))
 
 const salvo = localStorage.getItem('dados')
