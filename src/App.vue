@@ -1,11 +1,32 @@
-<script setup></script>
+<script setup>
+</script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <div id="app">
+    <!-- Navegação -->
+    <nav class="p-4 bg-green-600 text-white flex gap-4">
+      <router-link to="/">Home</router-link>
+      <router-link to="/sistema">Sistema</router-link>
+    </nav>
+
+    <!-- Conteúdo das páginas -->
+    <router-view />
+  </div>
 </template>
 
-<style scoped></style>
+<style>
+#app {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Estilo dos links */
+a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+a.router-link-active {
+  text-decoration: underline;
+}
+</style>
